@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEGADETH – ROBLOX · Tribute Band</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0b0b;
+            color: #ccc;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(140, 20, 20, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(140, 20, 20, 0.08) 0%, transparent 40%),
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 30px,
+                    rgba(255, 255, 255, 0.008) 30px,
+                    rgba(255, 255, 255, 0.008) 31px);
+            background-color: #0b0b0b;
+        }
+
+        .site {
+            max-width: 1100px;
+            width: 100%;
+            background: #111;
+            border: 1px solid #2a1a1a;
+            border-radius: 12px;
+            padding: 2rem 2rem 2.5rem;
+            box-shadow: 0 0 60px rgba(180, 20, 20, 0.06);
+            position: relative;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #2a1a1a;
+            margin-bottom: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            color: #f0e6d0;
+            text-shadow: 0 0 20px rgba(200, 30, 30, 0.3);
+            margin: 0;
+        }
+
+        .logo h1 span {
+            color: #b81a1a;
+        }
+
+        .logo .sub {
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .share-icon {
+            font-size: 1.6rem;
+            color: #aaa;
+            cursor: default;
+            transition: color 0.3s;
+        }
+
+        .share-icon:hover {
+            color: #b81a1a;
+        }
+
+        /* ── TAB BUTTONS ── */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #2a1a1a;
+            padding-bottom: 0.8rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #999;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            border-radius: 4px 4px 0 0;
+            font-family: inherit;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn i {
+            margin-right: 0.5rem;
+            color: #b81a1a;
+            transition: color 0.25s;
+        }
+
+        .tab-btn:hover {
+            color: #eee;
+            background: #1a1a1a;
+        }
+
+        .tab-btn.active {
+            color: #fff;
+            border-bottom-color: #b81a1a;
+            background: #1a0f0f;
+        }
+
+        .tab-btn.active i {
+            color: #e62e2e;
+        }
+
+        /* ── CONTENT PANELS ── */
+        .panel {
+            display: none;
+            animation: fade 0.3s ease;
+            background: #141414;
+            border: 1px solid #2a1a1a;
+            border-radius: 6px;
+            padding: 1.8rem 2rem;
+            margin-top: 0.5rem;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 0.3;
+                transform: translateY(6px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel h2 {
+            font-size: 1.6rem;
+            color: #f0e6d0;
+            border-bottom: 2px solid #b81a1a;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .panel h2 i {
+            color: #b81a1a;
+            margin-right: 0.6rem;
+        }
+
+        .panel h3 {
+            color: #ddd;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.3rem;
+        }
+
+        .panel p {
+            color: #bbb;
+            margin-bottom: 0.8rem;
+        }
+
+        .panel .highlight {
+            color: #b81a1a;
+            font-weight: 700;
+        }
+
+        /* ── HERO / TRIBUTE BANNER ── */
+        .hero-tribute {
+            background: linear-gradient(135deg, #1a0f0f, #0d0d0d);
+            border-left: 4px solid #b81a1a;
+            border-radius: 4px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem 2rem;
+        }
+
+        .hero-tribute .badge {
+            background: #b81a1a;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+        }
+
+        .hero-tribute .text {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        .hero-tribute .text strong {
+            color: #f0e6d0;
+        }
+
+        .hero-tribute .text i {
+            color: #b81a1a;
+            margin-right: 0.4rem;
+        }
+
+        /* ── NEWS ITEMS ── */
+        .news-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #1f1f1f;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-item .ndate {
+            font-weight: 700;
+            color: #b81a1a;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .news-item .ntitle {
+            font-weight: 700;
+            color: #f0e6d0;
+            font-size: 1.05rem;
+            margin: 0.2rem 0 0.3rem;
+        }
+
+        .news-item .ntext {
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .news-item .ntext .quote {
+            color: #aaa;
+            font-style: italic;
+            border-left: 2px solid #b81a1a;
+            padding-left: 0.8rem;
+            margin: 0.4rem 0;
+        }
+
+        .news-item .ntext .highlight {
+            color: #b81a1a;
+            font-weight: 600;
+        }
+
+        /* ── BAND ── */
+        .band-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .band-card {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 1rem 0.5rem;
+            border-radius: 6px;
+            border: 1px solid #2a1a1a;
+            transition: border-color 0.3s;
+        }
+
+        .band-card:hover {
+            border-color: #b81a1a;
+        }
+
+        .band-card .avatar {
+            font-size: 2.8rem;
+            color: #b81a1a;
+            margin-bottom: 0.2rem;
+        }
+
+        .band-card .name {
+            font-weight: 700;
+            color: #f0e6d0;
+        }
+
+        .band-card .role {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── TOUR LIST ── */
+        .tour-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #222;
+            align-items: center;
+            gap: 0.3rem 1rem;
+        }
+
+        .tour-item:last-child {
+            border-bottom: none;
+        }
+
+        .tour-item .date {
+            font-weight: 700;
+            color: #b81a1a;
+            min-width: 100px;
+        }
+
+        .tour-item .city {
+            font-weight: 600;
+            color: #eee;
+            flex: 1;
+        }
+
+        .tour-item .venue {
+            color: #999;
+            font-size: 0.9rem;
+            min-width: 120px;
+        }
+
+        .tour-item .status {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            padding: 0.1rem 0.9rem;
+            border-radius: 20px;
+            border: 1px solid #333;
+            color: #999;
+        }
+
+        .tour-item .status.sold {
+            border-color: #b81a1a;
+            color: #b81a1a;
+        }
+
+        .tour-item .status.special {
+            border-color: #c8a020;
+            color: #c8a020;
+        }
+
+        .special-block {
+            background: #1a140f;
+            border: 1px solid #6a4a1a;
+            border-radius: 6px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .special-block .title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #c8a020;
+            text-transform: uppercase;
+        }
+
+        .special-block .detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2rem;
+            margin: 0.5rem 0;
+            color: #ccc;
+        }
+
+        .special-block .detail i {
+            color: #c8a020;
+            width: 1.6rem;
+        }
+
+        /* ── BLOX ARMY ── */
+        .blox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .blox-item {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #2a1a1a;
+            text-align: center;
+        }
+
+        .blox-item i {
+            font-size: 2rem;
+            color: #b81a1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .blox-item .name {
+            font-weight: 700;
+            color: #f0e6d0;
+        }
+
+        .blox-item .desc {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* ── MEDIA LINKS ── */
+        .media-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            justify-content: center;
+            padding: 0.5rem 0;
+        }
+
+        .media-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #ccc;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            background: #1a1a1a;
+            border: 1px solid #2a1a1a;
+            transition: all 0.25s;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .media-links a i {
+            font-size: 1.4rem;
+            color: #b81a1a;
+        }
+
+        .media-links a:hover {
+            background: #2a1a1a;
+            border-color: #b81a1a;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ── TIMELINE ── */
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #1f1f1f;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            align-items: baseline;
+        }
+
+        .timeline-list li:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-list .year {
+            font-weight: 700;
+            color: #b81a1a;
+            min-width: 100px;
+            font-size: 0.95rem;
+        }
+
+        .timeline-list .event {
+            color: #ddd;
+            flex: 1;
+        }
+
+        .timeline-list .event strong {
+            color: #f0e6d0;
+        }
+
+        /* ── BEER ── */
+        .beer-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .beer-block i {
+            font-size: 3.5rem;
+            color: #c8a020;
+        }
+
+        .beer-block .info {
+            color: #bbb;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a1a1a;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #b81a1a;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .logo h1 {
+                font-size: 2rem;
+            }
+            .tabs {
+                gap: 0.2rem;
+            }
+            .tab-btn {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .tab-btn i {
+                margin-right: 0.2rem;
+            }
+            .panel {
+                padding: 1rem;
+            }
+            .tour-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .tour-item .date {
+                min-width: auto;
+            }
+            .tour-item .venue {
+                min-width: auto;
+            }
+            .band-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .media-links {
+                gap: 0.6rem;
+            }
+            .media-links a {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .timeline-list li {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .timeline-list .year {
+                min-width: auto;
+            }
+            .hero-tribute {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .news-item .ndate {
+                display: block;
+                margin-bottom: 0.2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .band-grid {
+                grid-template-columns: 1fr;
+            }
+            .blox-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">
+                <h1>MEGADETH <span>–</span> ROBLOX</h1>
+                <div class="sub">tribute band · unofficial</div>
+            </div>
+            <div class="share-icon" title="Share"><i class="fas fa-share-alt"></i></div>
+        </header>
+
+        <!-- TRIBUTE BANNER -->
+        <div class="hero-tribute">
+            <span class="badge"><i class="fas fa-star"></i> #1 Tribute</span>
+            <div class="text">
+                <i class="fas fa-skull"></i>
+                <strong>We are the FIRST Megadeth tribute band in Roblox!</strong> 
+                We are <strong>NOT</strong> affiliated with the official Megadeth – this is a fan-made tribute project.
+                All shows are virtual, created with passion for the metal community.
+            </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs" id="tabContainer">
+            <button class="tab-btn active" data-tab="news"><i class="fas fa-newspaper"></i> News</button>
+            <button class="tab-btn" data-tab="band"><i class="fas fa-users"></i> Band</button>
+            <button class="tab-btn" data-tab="tour"><i class="fas fa-map-pin"></i> Tour</button>
+            <button class="tab-btn" data-tab="bloxarmy"><i class="fas fa-crown"></i> Blox Army</button>
+            <button class="tab-btn" data-tab="cyber"><i class="fas fa-shield-alt"></i> Cyber Army</button>
+            <button class="tab-btn" data-tab="media"><i class="fas fa-photo-video"></i> Media</button>
+            <button class="tab-btn" data-tab="collectibles"><i class="fas fa-star"></i> Collectibles</button>
+            <button class="tab-btn" data-tab="timeline"><i class="fas fa-clock"></i> Timeline</button>
+            <button class="tab-btn" data-tab="beer"><i class="fas fa-beer"></i> Beer</button>
+        </div>
+
+        <!-- PANELS -->
+        <div id="panelContainer">
+
+            <!-- NEWS -->
+            <div class="panel active" id="panel-news">
+                <h2><i class="fas fa-newspaper"></i> News</h2>
+
+                <!-- 1. 21 августа – Server Rebranding -->
+                <div class="news-item">
+                    <div class="ndate">AUG 21, 2026</div>
+                    <div class="ntitle">SERVER REBRANDING &amp; NEW CHAPTER</div>
+                    <div class="ntext">
+                        <p><span class="highlight">@everyone</span> We are excited to announce a massive update for our community! <strong>Romich Production</strong> is officially evolving into <strong>MEGADETH – ROBLOX</strong>.</p>
+                        <p>🎸 From this moment on, we are focusing all our energy, efforts, and passion exclusively on building the ultimate Megadeth virtual experience in Roblox!</p>
+                        <div class="quote">
+                            <strong>What’s Changing?</strong><br />
+                            • Full Focus on Megadeth: Every upcoming concert, virtual venue, stage design, and event will be entirely dedicated to bringing the iconic energy of Megadeth to life.<br />
+                            • Upgraded Shows: Expect higher quality audio setups, custom Roblox animations, detailed light shows, and immersive concert arenas.<br />
+                            • Community Hub: Our server is now the primary headquarters for all thrash metal fans and Roblox builders supporting our show productions.
+                        </div>
+                        <p>Thank you all for being part of this journey. Get ready for the heaviest virtual shows yet — stay tuned for venue previews and tour dates!</p>
+                    </div>
+                </div>
+
+                <!-- 2. 31 августа – European tour complete -->
+                <div class="news-item">
+                    <div class="ndate">AUG 31, 2026</div>
+                    <div class="ntitle">BREAKOUT: HIBERNATION OF THE NATIONS 2026 HAS COME TO AN END.</div>
+                    <div class="ntext">
+                        <p>Tonight in Lisbon, the final chapter of this incredible European journey was written.</p>
+                        <p>What a ride it has been.</p>
+                        <p>From the very first show to the last note played tonight, Europe gave us unforgettable nights, endless energy, deafening crowds, and memories that will stay with us forever. Every city welcomed us with passion, every venue shook from the power of metal, and every audience proved once again why this music unites people across nations.</p>
+                        <p>We witnessed sold-out crowds, incredible fan projects, thousands of voices singing together, and an atmosphere that words can barely describe. The energy you brought to every single show fueled this tour from beginning to end.</p>
+                        <p>To everyone who joined us somewhere along the road — thank you. You made BREAKOUT: HIBERNATION OF THE NATIONS more than just a tour. You made it an experience we will never forget.</p>
+                        <p><span class="highlight">Europe, our time together in 2026 has come to a close.</span></p>
+                        <p>But the journey is far from over.</p>
+                        <p><strong>Our next path leads across the Atlantic.</strong></p>
+                        <p><span class="highlight">America... we're coming.</span></p>
+                        <p>See you soon.</p>
+                        <p style="font-weight:700; color:#f0e6d0;">MEGADETH · BREAKOUT: HIBERNATION OF THE NATIONS · EUROPE 2026 · TOUR COMPLETE.</p>
+                    </div>
+                </div>
+
+                <!-- 3. 1 сентября – Almaty special show -->
+                <div class="news-item">
+                    <div class="ndate">SEP 1, 2026</div>
+                    <div class="ntitle">SPECIAL SHOW ANNOUNCEMENT – “MEGADETH IN ROBLOX - LIVE AT ALMATY”</div>
+                    <div class="ntext">
+                        <p>On <strong>September 15, 2026</strong>, Megadeth will return for a special one-night-only event at <strong>Spartak Stadium, Almaty</strong>.</p>
+                        <p>This exclusive Roblox virtual show will celebrate the end of the <span class="highlight">BREAKOUT: HIBERNATION OF THE NATIONS</span> era and bring fans together for a unique night of heavy metal, unforgettable performances, and surprises.</p>
+                        <p><span class="highlight">One city. One night. One special event.</span></p>
+                        <p>Join us in Almaty and become part of this exclusive experience before the next chapter begins.</p>
+                        <p style="font-weight:700; color:#c8a020;">📅 15.09.2026 · SPECIAL SHOW · Spartak Stadium, Almaty</p>
+                    </div>
+                </div>
+
+                <!-- 4. 3 сентября – USA tour announcement -->
+                <div class="news-item">
+                    <div class="ndate">SEP 3, 2026</div>
+                    <div class="ntitle">USA – WE'RE COMING FOR YOU!</div>
+                    <div class="ntext">
+                        <p><span class="highlight">Megadeth in Roblox is coming to USA in September 2026 with six headline shows!</span></p>
+                        <ul style="list-style:none; padding:0; margin:0.5rem 0;">
+                            <li style="padding:0.2rem 0; border-bottom:1px solid #222;">September 10 | Seattle, USA</li>
+                            <li style="padding:0.2rem 0; border-bottom:1px solid #222;">September 12 | Portland, USA</li>
+                            <li style="padding:0.2rem 0; border-bottom:1px solid #222;">September 17 | Denver, USA</li>
+                            <li style="padding:0.2rem 0; border-bottom:1px solid #222;">September 18 | Chicago, USA</li>
+                            <li style="padding:0.2rem 0; border-bottom:1px solid #222;">September 21 | New York, USA</li>
+                            <li style="padding:0.2rem 0;">September 24 | Los Angeles, USA</li>
+                        </ul>
+                        <p>Get ready, America – the virtual thrash will be unleashed!</p>
+                    </div>
+                </div>
+
+            </div><!-- /panel-news -->
+
+            <!-- BAND -->
+            <div class="panel" id="panel-band">
+                <h2><i class="fas fa-users"></i> Band</h2>
+                <div class="band-grid">
+                    <div class="band-card">
+                        <div class="avatar"><i class="fas fa-guitar"></i></div>
+                        <div class="name">Dave Mustaine</div>
+                        <div class="role">Lead Guitar · Vocals</div>
+                    </div>
+                    <div class="band-card">
+                        <div class="avatar"><i class="fas fa-guitar"></i></div>
+                        <div class="name">Kiko Loureiro</div>
+                        <div class="role">Lead Guitar</div>
+                    </div>
+                    <div class="band-card">
+                        <div class="avatar"><i class="fas fa-guitar"></i></div>
+                        <div class="name">James LoMenzo</div>
+                        <div class="role">Bass</div>
+                    </div>
+                    <div class="band-card">
+                        <div class="avatar"><i class="fas fa-drum"></i></div>
+                        <div class="name">Dirk Verbeuren</div>
+                        <div class="role">Drums</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOUR -->
+            <div class="panel" id="panel-tour">
+                <h2><i class="fas fa-map-pin"></i> Tour 2026</h2>
+                <h3>USA – WE'RE COMING FOR YOU!</h3>
+                <div style="margin:0.5rem 0 0.2rem; color:#999; font-size:0.9rem;">September 2026</div>
+                <div class="tour-item">
+                    <span class="date">SEP 10</span>
+                    <span class="city">Seattle, USA</span>
+                    <span class="venue">Climate Pledge Arena</span>
+                    <span class="status sold">Tickets</span>
+                </div>
+                <div class="tour-item">
+                    <span class="date">SEP 12</span>
+                    <span class="city">Portland, USA</span>
+                    <span class="venue">Moda Center</span>
+                    <span class="status sold">Tickets</span>
+                </div>
+                <div class="tour-item">
+                    <span class="date">SEP 17</span>
+                    <span class="city">Denver, USA</span>
+                    <span class="venue">Ball Arena</span>
+                    <span class="status sold">Tickets</span>
+                </div>
+                <div class="tour-item">
+                    <span class="date">SEP 18</span>
+                    <span class="city">Chicago, USA</span>
+                    <span class="venue">United Center</span>
+                    <span class="status sold">Tickets</span>
+                </div>
+                <div class="tour-item">
+                    <span class="date">SEP 21</span>
+                    <span class="city">New York, USA</span>
+                    <span class="venue">Madison Square Garden</span>
+                    <span class="status sold">Tickets</span>
+                </div>
+                <div class="tour-item">
+                    <span class="date">SEP 24</span>
+                    <span class="city">Los Angeles, USA</span>
+                    <span class="venue">The Kia Forum</span>
+                    <span class="status sold">Tickets</span>
+                </div>
+
+                <div class="special-block">
+                    <div class="title"><i class="fas fa-star"></i> SPECIAL SHOW ANNOUNCEMENT</div>
+                    <div style="font-weight:700; color:#f0e6d0;">“MEGADETH IN ROBLOX – LIVE AT ALMATY”</div>
+                    <div class="detail">
+                        <span><i class="fas fa-calendar-alt"></i> 15.09.2026</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Spartak Stadium, Almaty</span>
+                        <span><i class="fas fa-ticket-alt"></i> One‑night only · exclusive</span>
+                    </div>
+                    <p style="color:#bbb; margin-top:0.5rem;">
+                        Virtual show celebrating the end of the <strong style="color:#f0e6d0;">BREAKOUT: HIBERNATION OF THE NATIONS</strong> era.
+                    </p>
+                    <span class="status special" style="display:inline-block; margin-top:0.3rem;">Special Event</span>
+                </div>
+            </div>
+
+            <!-- BLOX ARMY -->
+            <div class="panel" id="panel-bloxarmy">
+                <h2><i class="fas fa-crown"></i> Blox Army</h2>
+                <div class="blox-grid">
+                    <div class="blox-item">
+                        <i class="fas fa-camera"></i>
+                        <div class="name">Photo Op</div>
+                        <div class="desc">Meet the band before the show</div>
+                    </div>
+                    <div class="blox-item">
+                        <i class="fas fa-ticket-alt"></i>
+                        <div class="name">Priority Entry</div>
+                        <div class="desc">Early access to the venue</div>
+                    </div>
+                    <div class="blox-item">
+                        <i class="fas fa-gift"></i>
+                        <div class="name">Exclusive Merch</div>
+                        <div class="desc">Limited edition tour bundle</div>
+                    </div>
+                </div>
+                <p style="color:#aaa; margin-top:0.5rem;">
+                    <i class="fas fa-info-circle" style="color:#b81a1a;"></i> Blox Army packages available for all shows. Check tour dates for details.
+                </p>
+            </div>
+
+            <!-- CYBER ARMY -->
+            <div class="panel" id="panel-cyber">
+                <h2><i class="fas fa-shield-alt"></i> Cyber Army</h2>
+                <p style="color:#ddd;">
+                    <i class="fas fa-user-secret" style="color:#b81a1a;"></i>
+                    Join the official Megadeth fan club. Get presale codes, exclusive content, and meet &amp; greet opportunities.
+                </p>
+                <p style="color:#aaa; margin-top:0.5rem;">
+                    <span class="highlight">Presale starts August 31</span> – be the first to secure your tickets.
+                </p>
+                <div style="margin-top:1rem; background:#1a1a1a; padding:0.8rem; border-radius:4px; border-left:3px solid #b81a1a;">
+                    <i class="fas fa-envelope" style="color:#b81a1a;"></i> Sign up now – <a href="#" style="color:#b81a1a;">cyberarmy.megadeth.com</a>
+                </div>
+            </div>
+
+            <!-- MEDIA -->
+            <div class="panel" id="panel-media">
+                <h2><i class="fas fa-photo-video"></i> Media</h2>
+                <div class="media-links">
+                    <a href="#" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                    <a href="#" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+                    <a href="#" target="_blank"><i class="fas fa-gamepad"></i> Roblox Game</a>
+                    <a href="#" target="_blank"><i class="fas fa-users"></i> Roblox Group</a>
+                </div>
+                <p style="color:#888; margin-top:0.8rem;">
+                    <i class="fas fa-headphones" style="color:#b81a1a;"></i> Follow us for behind‑the‑scenes, live streams, and more.
+                </p>
+            </div>
+
+            <!-- COLLECTIBLES -->
+            <div class="panel" id="panel-collectibles">
+                <h2><i class="fas fa-star"></i> Collectibles</h2>
+                <div class="blox-grid">
+                    <div class="blox-item">
+                        <i class="fas fa-skull"></i>
+                        <div class="name">Limited Edition Bust</div>
+                        <div class="desc">Signed by Dave</div>
+                    </div>
+                    <div class="blox-item">
+                        <i class="fas fa-guitar"></i>
+                        <div class="name">Pick Set</div>
+                        <div class="desc">4 custom picks</div>
+                    </div>
+                    <div class="blox-item">
+                        <i class="fas fa-ticket-alt"></i>
+                        <div class="name">Ticket Stub Replica</div>
+                        <div class="desc">From the 2026 tour</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <div class="panel" id="panel-timeline">
+                <h2><i class="fas fa-clock"></i> Timeline</h2>
+                <ul class="timeline-list">
+                    <li>
+                        <span class="year">20 Nov 2025</span>
+                        <span class="event"><strong>World Tour with Epolets!</strong> – We are bringing world tour on 20th Nov 2025, Get ready!</span>
+                    </li>
+                    <li>
+                        <span class="year">3 Mar 2026</span>
+                        <span class="event"><strong>Megadeth World Tour 2026</strong> – 3 March 2026</span>
+                    </li>
+                    <li>
+                        <span class="year">10 Aug 2026</span>
+                        <span class="event"><strong>MEGADETH: LIVE IN ROBLOX "BREAKOUT: HIBERNATION OF THE NATIONS"</strong> – Exclusive Virtual World Tour</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- BEER -->
+            <div class="panel" id="panel-beer">
+                <h2><i class="fas fa-beer"></i> Beer</h2>
+                <div class="beer-block">
+                    <i class="fas fa-beer"></i>
+                    <div class="info">
+                        <div style="font-weight:700; color:#f0e6d0;">Killing Road Lager</div>
+                        <p style="color:#aaa; margin:0.2rem 0;">
+                            Brewed exclusively for the tour. Available at select venues and online.
+                        </p>
+                        <span style="color:#c8a020;"><i class="fas fa-check-circle"></i> Limited run – 2026 edition</span>
+                    </div>
+                </div>
+                <p style="color:#888; margin-top:0.8rem;">
+                    <i class="fas fa-exclamation-triangle" style="color:#c8a020;"></i> Must be 21+ to purchase. Drink responsibly.
+                </p>
+            </div>
+
+        </div><!-- /panelContainer -->
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>&copy; 2026 Megadeth – Roblox · tribute project</span>
+            <span>
+                <i class="fas fa-skull" style="color:#b81a1a;"></i>
+                <a href="#">Privacy</a> · <a href="#">Imprint</a> · <a href="#">Contact</a>
+            </span>
+        </footer>
+
+    </div>
+
+    <script>
+        (function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.panel');
+
+            function activateTab(tabId) {
+                panels.forEach(p => p.classList.remove('active'));
+                const target = document.getElementById('panel-' + tabId);
+                if (target) target.classList.add('active');
+
+                tabs.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.tab === tabId) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            tabs.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const tabId = this.dataset.tab;
+                    activateTab(tabId);
+                });
+            });
+
+            // ensure first tab active
+            const activeTab = document.querySelector('.tab-btn.active');
+            if (activeTab) {
+                const id = activeTab.dataset.tab;
+                panels.forEach(p => p.classList.remove('active'));
+                const panel = document.getElementById('panel-' + id);
+                if (panel) panel.classList.add('active');
+            }
+        })();
+    </script>
+</body>
+</html>
