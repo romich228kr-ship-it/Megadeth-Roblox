@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MEGADETH – ROBLOX · Tribute Band</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -17,7 +18,7 @@
             color: #c8d0e0;
             font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1rem;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -34,12 +35,12 @@
         }
 
         .site {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
             background: #0f1625;
             border: 1px solid #1a2a4a;
             border-radius: 12px;
-            padding: 2rem 2rem 2.5rem;
+            padding: 1.8rem 1.8rem 2.5rem;
             box-shadow: 0 0 60px rgba(20, 60, 160, 0.06);
             position: relative;
         }
@@ -64,12 +65,13 @@
         }
 
         .logo h1 {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 900;
             letter-spacing: 0.08em;
             color: #e0e8ff;
             text-shadow: 0 0 20px rgba(30, 100, 200, 0.25);
             margin: 0;
+            line-height: 1.2;
         }
 
         .logo h1 span {
@@ -77,7 +79,7 @@
         }
 
         .logo .sub {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 0.15em;
             color: #7a8aaa;
             text-transform: uppercase;
@@ -118,6 +120,7 @@
             border-radius: 4px 4px 0 0;
             font-family: inherit;
             border-bottom: 3px solid transparent;
+            white-space: nowrap;
         }
 
         .tab-btn i {
@@ -202,7 +205,7 @@
 
         /* ── NEWS ITEMS ── */
         .news-item {
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             border-bottom: 1px solid #1a2a4a;
         }
 
@@ -216,7 +219,8 @@
             font-size: 0.9rem;
             letter-spacing: 0.04em;
             display: inline-block;
-            min-width: 100px;
+            min-width: 110px;
+            margin-right: 1rem;
         }
 
         .news-item .ntitle {
@@ -226,10 +230,19 @@
             margin: 0.2rem 0 0.3rem;
         }
 
+        /* на ПК дата и заголовок в одной строке */
+        .news-item .news-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem 1rem;
+            margin-bottom: 0.2rem;
+        }
+
         .news-item .ntext {
             color: #b0c0dd;
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .news-item .ntext .quote {
@@ -243,6 +256,21 @@
         .news-item .ntext .highlight {
             color: #5a9fdf;
             font-weight: 600;
+        }
+
+        .news-item .ntext ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0;
+        }
+
+        .news-item .ntext ul li {
+            padding: 0.2rem 0;
+            border-bottom: 1px solid #1a2a4a;
+        }
+
+        .news-item .ntext ul li:last-child {
+            border-bottom: none;
         }
 
         /* ── BAND ── */
@@ -523,27 +551,73 @@
         }
 
         /* ── RESPONSIVE ── */
+
+        /* Планшеты и маленькие ноутбуки */
+        @media (max-width: 1024px) {
+            .site {
+                padding: 1.5rem 1.5rem 2rem;
+            }
+            .logo h1 {
+                font-size: 2.2rem;
+            }
+            .panel {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Телефоны */
         @media (max-width: 700px) {
+            body {
+                padding: 0.8rem 0.5rem;
+            }
+            .site {
+                padding: 1rem 0.8rem;
+                border-radius: 8px;
+            }
             .header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.8rem;
+                gap: 0.5rem;
             }
             .logo h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            .logo .sub {
+                font-size: 0.7rem;
             }
             .tabs {
                 gap: 0.2rem;
+                padding-bottom: 0.4rem;
+                margin-bottom: 1rem;
             }
             .tab-btn {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
                 padding: 0.3rem 0.6rem;
+                white-space: nowrap;
             }
             .tab-btn i {
                 margin-right: 0.2rem;
+                font-size: 0.8rem;
             }
             .panel {
-                padding: 1rem;
+                padding: 1rem 0.8rem;
+            }
+            .panel h2 {
+                font-size: 1.3rem;
+            }
+            .news-item .ndate {
+                display: block;
+                min-width: auto;
+                margin-right: 0;
+                margin-bottom: 0.2rem;
+            }
+            .news-item .news-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+            .news-item .ntitle {
+                font-size: 1rem;
             }
             .tour-item {
                 flex-direction: column;
@@ -563,7 +637,7 @@
             }
             .media-links a {
                 font-size: 0.8rem;
-                padding: 0.3rem 0.6rem;
+                padding: 0.3rem 0.7rem;
             }
             .timeline-list li {
                 flex-direction: column;
@@ -572,14 +646,64 @@
             .timeline-list .year {
                 min-width: auto;
             }
+            .blox-grid {
+                grid-template-columns: 1fr;
+            }
+            .special-block .detail {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .footer {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
         }
 
         @media (max-width: 500px) {
             .band-grid {
                 grid-template-columns: 1fr;
             }
-            .blox-grid {
-                grid-template-columns: 1fr;
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            .tab-btn {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.4rem;
+            }
+        }
+
+        /* Крупные экраны (ПК) – улучшаем читаемость */
+        @media (min-width: 1200px) {
+            body {
+                padding: 2.5rem 4rem;
+            }
+            .site {
+                padding: 2.5rem 3rem 3rem;
+                border-radius: 16px;
+            }
+            .logo h1 {
+                font-size: 3.2rem;
+            }
+            .panel {
+                padding: 2.2rem 2.8rem;
+            }
+            .panel h2 {
+                font-size: 1.9rem;
+            }
+            .news-item .ndate {
+                min-width: 130px;
+                font-size: 1rem;
+            }
+            .news-item .ntitle {
+                font-size: 1.15rem;
+            }
+            .news-item .ntext {
+                font-size: 1rem;
+            }
+            .tab-btn {
+                font-size: 0.95rem;
+                padding: 0.6rem 1.4rem;
             }
         }
     </style>
@@ -615,8 +739,10 @@
 
                 <!-- 1. 21 августа – Server Rebranding -->
                 <div class="news-item">
-                    <div class="ndate">AUG 21, 2026</div>
-                    <div class="ntitle">SERVER REBRANDING &amp; NEW CHAPTER</div>
+                    <div class="news-header">
+                        <span class="ndate">AUG 21, 2026</span>
+                        <span class="ntitle">SERVER REBRANDING &amp; NEW CHAPTER</span>
+                    </div>
                     <div class="ntext">
                         <p><span class="highlight">@everyone</span> We are excited to announce a massive update for our community! <strong>Romich Production</strong> is officially evolving into <strong>MEGADETH – ROBLOX</strong>.</p>
                         <p>🎸 From this moment on, we are focusing all our energy, efforts, and passion exclusively on building the ultimate Megadeth virtual experience in Roblox!</p>
@@ -632,8 +758,10 @@
 
                 <!-- 2. 31 августа – European tour complete -->
                 <div class="news-item">
-                    <div class="ndate">AUG 31, 2026</div>
-                    <div class="ntitle">BREAKOUT: HIBERNATION OF THE NATIONS 2026 HAS COME TO AN END.</div>
+                    <div class="news-header">
+                        <span class="ndate">AUG 31, 2026</span>
+                        <span class="ntitle">BREAKOUT: HIBERNATION OF THE NATIONS 2026 HAS COME TO AN END.</span>
+                    </div>
                     <div class="ntext">
                         <p>Tonight in Lisbon, the final chapter of this incredible European journey was written.</p>
                         <p>What a ride it has been.</p>
@@ -651,8 +779,10 @@
 
                 <!-- 3. 1 сентября – Almaty special show -->
                 <div class="news-item">
-                    <div class="ndate">SEP 1, 2026</div>
-                    <div class="ntitle">SPECIAL SHOW ANNOUNCEMENT – “MEGADETH IN ROBLOX - LIVE AT ALMATY”</div>
+                    <div class="news-header">
+                        <span class="ndate">SEP 1, 2026</span>
+                        <span class="ntitle">SPECIAL SHOW ANNOUNCEMENT – “MEGADETH IN ROBLOX - LIVE AT ALMATY”</span>
+                    </div>
                     <div class="ntext">
                         <p>On <strong>September 15, 2026</strong>, Megadeth will return for a special one-night-only event at <strong>Spartak Stadium, Almaty</strong>.</p>
                         <p>This exclusive Roblox virtual show will celebrate the end of the <span class="highlight">BREAKOUT: HIBERNATION OF THE NATIONS</span> era and bring fans together for a unique night of heavy metal, unforgettable performances, and surprises.</p>
@@ -664,17 +794,19 @@
 
                 <!-- 4. 3 сентября – USA tour announcement -->
                 <div class="news-item">
-                    <div class="ndate">SEP 3, 2026</div>
-                    <div class="ntitle">USA – WE'RE COMING FOR YOU!</div>
+                    <div class="news-header">
+                        <span class="ndate">SEP 3, 2026</span>
+                        <span class="ntitle">USA – WE'RE COMING FOR YOU!</span>
+                    </div>
                     <div class="ntext">
                         <p><span class="highlight">Megadeth in Roblox is coming to USA in September 2026 with six headline shows!</span></p>
-                        <ul style="list-style:none; padding:0; margin:0.5rem 0;">
-                            <li style="padding:0.2rem 0; border-bottom:1px solid #1a2a4a;">September 10 | Seattle, USA</li>
-                            <li style="padding:0.2rem 0; border-bottom:1px solid #1a2a4a;">September 12 | Portland, USA</li>
-                            <li style="padding:0.2rem 0; border-bottom:1px solid #1a2a4a;">September 17 | Denver, USA</li>
-                            <li style="padding:0.2rem 0; border-bottom:1px solid #1a2a4a;">September 18 | Chicago, USA</li>
-                            <li style="padding:0.2rem 0; border-bottom:1px solid #1a2a4a;">September 21 | New York, USA</li>
-                            <li style="padding:0.2rem 0;">September 24 | Los Angeles, USA</li>
+                        <ul>
+                            <li>September 10 | Seattle, USA</li>
+                            <li>September 12 | Portland, USA</li>
+                            <li>September 17 | Denver, USA</li>
+                            <li>September 18 | Chicago, USA</li>
+                            <li>September 21 | New York, USA</li>
+                            <li>September 24 | Los Angeles, USA</li>
                         </ul>
                         <p>Get ready, America – the virtual thrash will be unleashed!</p>
                     </div>
@@ -863,7 +995,6 @@
                 });
             }
 
-            // клик по вкладкам
             tabs.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     const tabId = this.dataset.tab;
@@ -872,7 +1003,6 @@
                 });
             });
 
-            // клик по логотипу → главная (News)
             logo.addEventListener('click', function(e) {
                 activateTab('news');
                 document.getElementById('panelContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
