@@ -230,7 +230,6 @@
             margin: 0.2rem 0 0.3rem;
         }
 
-        /* на ПК дата и заголовок в одной строке */
         .news-item .news-header {
             display: flex;
             flex-wrap: wrap;
@@ -551,8 +550,6 @@
         }
 
         /* ── RESPONSIVE ── */
-
-        /* Планшеты и маленькие ноутбуки */
         @media (max-width: 1024px) {
             .site {
                 padding: 1.5rem 1.5rem 2rem;
@@ -565,7 +562,6 @@
             }
         }
 
-        /* Телефоны */
         @media (max-width: 700px) {
             body {
                 padding: 0.8rem 0.5rem;
@@ -673,7 +669,6 @@
             }
         }
 
-        /* Крупные экраны (ПК) – улучшаем читаемость */
         @media (min-width: 1200px) {
             body {
                 padding: 2.5rem 4rem;
@@ -720,7 +715,7 @@
             <div class="share-icon" title="Share"><i class="fas fa-share-alt"></i></div>
         </header>
 
-        <!-- TABS (верхняя навигация) -->
+        <!-- TABS -->
         <div class="tabs" id="tabContainer">
             <button class="tab-btn active" data-tab="news"><i class="fas fa-newspaper"></i> News</button>
             <button class="tab-btn" data-tab="band"><i class="fas fa-users"></i> Band</button>
@@ -733,11 +728,10 @@
         <!-- PANELS -->
         <div id="panelContainer">
 
-            <!-- NEWS (главная) -->
+            <!-- NEWS -->
             <div class="panel active" id="panel-news">
                 <h2><i class="fas fa-newspaper"></i> News</h2>
 
-                <!-- 1. 21 августа – Server Rebranding -->
                 <div class="news-item">
                     <div class="news-header">
                         <span class="ndate">AUG 21, 2026</span>
@@ -756,7 +750,6 @@
                     </div>
                 </div>
 
-                <!-- 2. 31 августа – European tour complete -->
                 <div class="news-item">
                     <div class="news-header">
                         <span class="ndate">AUG 31, 2026</span>
@@ -777,7 +770,6 @@
                     </div>
                 </div>
 
-                <!-- 3. 1 сентября – Almaty special show -->
                 <div class="news-item">
                     <div class="news-header">
                         <span class="ndate">SEP 1, 2026</span>
@@ -792,7 +784,6 @@
                     </div>
                 </div>
 
-                <!-- 4. 3 сентября – USA tour announcement -->
                 <div class="news-item">
                     <div class="news-header">
                         <span class="ndate">SEP 3, 2026</span>
@@ -814,7 +805,7 @@
 
             </div><!-- /panel-news -->
 
-            <!-- BAND -->
+            <!-- BAND (заменён Kiko на Teemu) -->
             <div class="panel" id="panel-band">
                 <h2><i class="fas fa-users"></i> Band</h2>
                 <div class="band-grid">
@@ -825,7 +816,7 @@
                     </div>
                     <div class="band-card">
                         <div class="avatar"><i class="fas fa-guitar"></i></div>
-                        <div class="name">Kiko Loureiro</div>
+                        <div class="name">Teemu Mäntysaari</div>
                         <div class="role">Lead Guitar</div>
                     </div>
                     <div class="band-card">
@@ -1008,7 +999,6 @@
                 document.getElementById('panelContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
 
-            // при загрузке – активна News
             const activeTab = document.querySelector('.tab-btn.active');
             if (activeTab) {
                 const id = activeTab.dataset.tab;
